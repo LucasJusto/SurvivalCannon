@@ -18,4 +18,8 @@ class Scenario: SKScene {
         self.addChild(scenario)
     }
     
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+    }
 }

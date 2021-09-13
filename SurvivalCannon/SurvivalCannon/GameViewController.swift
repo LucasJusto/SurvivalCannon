@@ -14,17 +14,19 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            let scene = Scenario(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-            scene.scaleMode = .aspectFill
-            // Present the scene
-            view.presentScene(scene)
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+        GameCenter.authenticateUser(view: self) {
+            if let view = self.view as! SKView? {
+                // Load the SKScene from 'GameScene.sks'
+                let scene = Scenario(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+                scene.scaleMode = .aspectFill
+                // Present the scene
+                view.presentScene(scene)
+                
+                view.ignoresSiblingOrder = true
+                
+                view.showsFPS = true
+                view.showsNodeCount = true
+            }
         }
     }
     
