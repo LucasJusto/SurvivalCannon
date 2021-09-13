@@ -8,30 +8,23 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-import GameKit
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
-    }
-    
+class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GameCenter.authenticateUser(view: self) {
-            if let view = self.view as! SKView? {
-                // Load the SKScene from 'GameScene.sks'
-                let scene = Scenario(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-                scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
-                
-                view.ignoresSiblingOrder = true
-                
-                view.showsFPS = true
-                view.showsNodeCount = true
-            }
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+            let scene = Scenario(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            scene.scaleMode = .aspectFill
+            // Present the scene
+            view.presentScene(scene)
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
     
