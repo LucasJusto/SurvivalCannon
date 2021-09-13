@@ -27,4 +27,12 @@ public class GameCenter {
         }
     }
     
+    static public func presentLeaderboard(view: UIViewController & GKGameCenterControllerDelegate) {
+        let viewController = GKGameCenterViewController()
+        viewController.gameCenterDelegate = view
+        viewController.viewState = .leaderboards
+        viewController.leaderboardIdentifier = "SurvivalCannonPointsLeaderboard"
+    
+        view.present(viewController, animated: true, completion: nil)
+    }
 }
