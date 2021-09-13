@@ -16,7 +16,7 @@ class Scenario: SKScene {
 //        scenario.position = CGPoint(x: 0, y: 0)
 //        scenario.size = CGSize(width: self.view!.scene!.size.width, height: self.view!.scene!.size.height)
 //        self.addChild(scenario)
-        let mainMenu = MainMenu()
+        let mainMenu = MainMenu(parentScene: self)
         mainMenu.position = CGPoint(x: 0, y: 0)
         mainMenu.size = CGSize(width: self.view!.scene!.size.width, height: self.view!.scene!.size.height)
         self.addChild(mainMenu)

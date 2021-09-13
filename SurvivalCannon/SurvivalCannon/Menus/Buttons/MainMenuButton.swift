@@ -23,7 +23,7 @@ class MainMenuButton: SKSpriteNode {
         
         let label = SKLabelNode(text: text)
         label.fontSize = self.size.height * 0.60
-        label.fontColor = .brown
+        label.fontColor = UIColor(named: "buttonTextColor")
         label.fontName = "Copperplate"
         label.verticalAlignmentMode = .center
         label.name = self.name

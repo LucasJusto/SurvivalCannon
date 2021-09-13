@@ -9,9 +9,11 @@ import Foundation
 import SpriteKit
 
 class MainMenu: SKSpriteNode {
+    var parentScene: SKScene?
     
-    init() {
+    init(parentScene: SKScene) {
         super.init(texture: nil, color: .white, size: CGSize(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 1))
+        self.parentScene = parentScene
         self.position = CGPoint(x: 0, y: 0)
         self.isUserInteractionEnabled = true
         self.zPosition = 700
@@ -67,10 +69,10 @@ class MainMenu: SKSpriteNode {
         
         y = UIScreen.main.bounds.height * -0.22
         self.addChild(MainMenuButton(mainMenu: self, position: CGPoint(x: 0, y: y), text: "SETTINGS", action: {
-            print("SETTINGS")
+            if let view = parentScene.view?.next as? GameViewController {
+                //GameCenter.presentLeaderboard(view: view)
+            }
         }))
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
