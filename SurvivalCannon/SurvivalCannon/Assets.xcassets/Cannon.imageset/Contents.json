@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Canhão.png",
+      "filename" : "Canhao.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Canhão@2x.png",
+      "filename" : "Canhao@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Canhão@3x.png",
+      "filename" : "Canhao@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
