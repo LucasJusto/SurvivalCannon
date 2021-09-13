@@ -12,7 +12,9 @@
 		4878313926EA973400E215DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4878313726EA973400E215DB /* Main.storyboard */; };
 		4878313B26EA973600E215DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4878313A26EA973600E215DB /* Assets.xcassets */; };
 		48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BBB0CA26EBD371003EE43C /* Scenario.swift */; };
-		ECC7A33026EFB8D700F9DDE1 /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */; };
+		B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */; };
+		B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */; };
+		B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85726EFD9FD0098FBBB /* Cannon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +25,9 @@
 		4878313A26EA973600E215DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4878313C26EA973600E215DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BBB0CA26EBD371003EE43C /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
-		ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
+		B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
+		B4D4F85726EFD9FD0098FBBB /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,8 @@
 		4878312C26EA973400E215DB /* SurvivalCannon */ = {
 			isa = PBXGroup;
 			children = (
-				ECC7A32E26EFB89800F9DDE1 /* Models */,
+				B4D4F85626EFD9FD0098FBBB /* Models */,
+				B4B202E926EFBC1700E4EBA9 /* Menus */,
 				4878312D26EA973400E215DB /* AppDelegate.swift */,
 				4878313526EA973400E215DB /* GameViewController.swift */,
 				4878313726EA973400E215DB /* Main.storyboard */,
@@ -67,10 +72,27 @@
 			path = SurvivalCannon;
 			sourceTree = "<group>";
 		};
-		ECC7A32E26EFB89800F9DDE1 /* Models */ = {
+		B4B202E926EFBC1700E4EBA9 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */,
+				B4B202EA26EFBC2200E4EBA9 /* Buttons */,
+				B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
+		B4B202EA26EFBC2200E4EBA9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		B4D4F85626EFD9FD0098FBBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4D4F85726EFD9FD0098FBBB /* Cannon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,10 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC7A33026EFB8D700F9DDE1 /* Cannon.swift in Sources */,
 				48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */,
+				B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
+				B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */,
+				B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +311,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6GD2RK7JQN;
+				DEVELOPMENT_TEAM = CUXQ8WM7SV;
 				INFOPLIST_FILE = SurvivalCannon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6GD2RK7JQN;
+				DEVELOPMENT_TEAM = CUXQ8WM7SV;
 				INFOPLIST_FILE = SurvivalCannon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
