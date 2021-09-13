@@ -13,6 +13,7 @@
 		4878313B26EA973600E215DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4878313A26EA973600E215DB /* Assets.xcassets */; };
 		48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BBB0CA26EBD371003EE43C /* Scenario.swift */; };
 		ECC7A33026EFB8D700F9DDE1 /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */; };
+		ECC7A33226EFC95200F9DDE1 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7A33126EFC95200F9DDE1 /* FinalScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4878313C26EA973600E215DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BBB0CA26EBD371003EE43C /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
+		ECC7A33126EFC95200F9DDE1 /* FinalScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4878313A26EA973600E215DB /* Assets.xcassets */,
 				4878313C26EA973600E215DB /* Info.plist */,
 				48BBB0CA26EBD371003EE43C /* Scenario.swift */,
+				ECC7A33126EFC95200F9DDE1 /* FinalScore.swift */,
 			);
 			path = SurvivalCannon;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
+				ECC7A33226EFC95200F9DDE1 /* FinalScore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
