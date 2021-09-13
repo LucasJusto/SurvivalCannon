@@ -35,4 +35,9 @@ public class GameCenter {
     
         view.present(viewController, animated: true, completion: nil)
     }
+    
+    static public func storeScore(points: Int) {
+        GKLeaderboard.submitScore(points, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["SurvivalCannonPointsLeaderboard"], completionHandler: { _ in
+        })
+    }
 }
