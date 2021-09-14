@@ -33,7 +33,7 @@ class MainMenu: SKSpriteNode {
         y = UIScreen.main.bounds.height * -0.12
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "RANKING", action: {
             if let view = parentScene.view?.next as? GameViewController {
-                //GameCenter.presentLeaderboard(view: view)
+                GameCenter.presentLeaderboard(view: view)
             }
         }))
         
