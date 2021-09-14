@@ -22,15 +22,25 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
         setBackground()
-        setGround()
-        setCannon()
+        setMainMenu()
+//        setSettings()
+//        setGround()
+//        setCannon()
     }
     
     func setMainMenu() {
         let mainMenu = MainMenu(parentScene: self)
         mainMenu.position = CGPoint(x: 0, y: 0)
-        mainMenu.size = CGSize(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height)
+        mainMenu.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.addChild(mainMenu)
+    }
+    
+    func setSettings() {
+        //MARK: - TODO: save/restore sound/music booleans
+        let settingsMenu = SettingsMenu(parentScene: self, sound: true, music: false)
+        settingsMenu.position = CGPoint(x: 0, y: 0)
+        settingsMenu.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.addChild(settingsMenu)
     }
     
     func setGround() {
