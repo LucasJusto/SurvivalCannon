@@ -37,7 +37,6 @@ class MainMenu: SKSpriteNode {
             }
         }))
         
-        
         y = UIScreen.main.bounds.height * -0.22
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "SETTINGS", action: {
             print("SETTINGS")
