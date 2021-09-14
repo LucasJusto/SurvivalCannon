@@ -16,6 +16,9 @@ class Scenario: SKScene {
         mainMenu.position = CGPoint(x: 0, y: 0)
         mainMenu.size = CGSize(width: self.view!.scene!.size.width, height: self.view!.scene!.size.height)
         self.addChild(mainMenu)
+        var barrelTimeSpawn = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("spawnEnemyBarrel"), userInfo: nil, repeats: true)
+        var anvilTimeSpawn = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("spawnEnemyAnvil"), userInfo: nil, repeats: true)
+        
     }
     
     
@@ -29,17 +32,16 @@ class Scenario: SKScene {
         return barrel.node
     }
     
-    func spawnEnemyBarrel(){
-        let spawnBarrel = SKAction.run {
-            let maxRange = (self.scene?.size.width)! / 2.8
-            let randomX = CGFloat.random(in: -maxRange...maxRange)
-            let barrel = self.createBarrel(x: randomX)
-            self.addChild(barrel)
+    @objc func spawnEnemyBarrel(){
+        let maxRange = (self.scene?.size.width)! / 2.8
+        let randomX = CGFloat.random(in: -maxRange...maxRange)
+        let barrel = self.createBarrel(x: randomX)
+        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 2)
+        barrel.run(moveDown) {
+            barrel.removeFromParent()
         }
-        let wait = SKAction.wait(forDuration: 1.5)
-        let sequence = SKAction.sequence([spawnBarrel, wait])
-        let repeatForever = SKAction.repeatForever(sequence)
-        self.run(repeatForever)
+        addChild(barrel)
+        
     }
     
     func createAnvil(x: CGFloat) -> SKSpriteNode{
@@ -50,18 +52,16 @@ class Scenario: SKScene {
         return anvil.node
     }
     
-     func spawnEnemyAnvil() {
-        let spawnAnvil = SKAction.run {
-            let maxRange = (self.scene?.size.width)! / 2.8
-            let randomX = CGFloat.random(in: -maxRange...maxRange)
-            let anvil = self.createAnvil(x: randomX)
-            self.addChild(anvil)
+    @objc func spawnEnemyAnvil() {
+        let maxRange = (self.scene?.size.width)! / 2.8
+        let randomX = CGFloat.random(in: -maxRange...maxRange)
+        let anvil = self.createAnvil(x: randomX)
+        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 2)
+        anvil.run(moveDown) {
+            anvil.removeFromParent()
         }
-        let wait = SKAction.wait(forDuration: 1.5)
-        let sequence = SKAction.sequence([spawnAnvil, wait])
-        let repeatForever = SKAction.repeatForever(sequence)
-        self.run(repeatForever)
-    }
+        addChild(anvil)
+     }
     
     
 }
