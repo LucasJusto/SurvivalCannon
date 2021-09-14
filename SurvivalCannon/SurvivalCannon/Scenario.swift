@@ -18,4 +18,50 @@ class Scenario: SKScene {
         self.addChild(mainMenu)
     }
     
+    
+    
+// MARK: - create and spawn enemys
+    func createBarrel(x: CGFloat) -> SKSpriteNode{
+        let barrel = Barrel(nameEnemy: "Barrel", typeEnemy: "barrel", breakable: true)
+        barrel.node.position = CGPoint(x: x, y: (self.scene?.size.height)!)
+        barrel.node.zPosition = 1
+        
+        return barrel.node
+    }
+    
+    func spawnEnemyBarrel(){
+        let spawnBarrel = SKAction.run {
+            let maxRange = (self.scene?.size.width)! / 2.8
+            let randomX = CGFloat.random(in: -maxRange...maxRange)
+            let barrel = self.createBarrel(x: randomX)
+            self.addChild(barrel)
+        }
+        let wait = SKAction.wait(forDuration: 1.5)
+        let sequence = SKAction.sequence([spawnBarrel, wait])
+        let repeatForever = SKAction.repeatForever(sequence)
+        self.run(repeatForever)
+    }
+    
+    func createAnvil(x: CGFloat) -> SKSpriteNode{
+        let anvil = Anvil(nameEnemy: "Anvil", typeEnemy: "anvil", breakable: false)
+        anvil.node.position = CGPoint(x: x, y: (self.scene?.size.height)!)
+        anvil.node.zPosition = 1
+        
+        return anvil.node
+    }
+    
+     func spawnEnemyAnvil() {
+        let spawnAnvil = SKAction.run {
+            let maxRange = (self.scene?.size.width)! / 2.8
+            let randomX = CGFloat.random(in: -maxRange...maxRange)
+            let anvil = self.createAnvil(x: randomX)
+            self.addChild(anvil)
+        }
+        let wait = SKAction.wait(forDuration: 1.5)
+        let sequence = SKAction.sequence([spawnAnvil, wait])
+        let repeatForever = SKAction.repeatForever(sequence)
+        self.run(repeatForever)
+    }
+    
+    
 }

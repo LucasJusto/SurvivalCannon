@@ -18,7 +18,16 @@ class Enemy{
         self.typeEnemy = typeEnemy
         self.breakable = breakable
     }
+    
+    
+    
+    
+    
+    
 }
+
+
+
 
 class Barrel: Enemy {
     var health: Int
@@ -30,8 +39,9 @@ class Barrel: Enemy {
         self.texture = "barrel"
         node = SKSpriteNode(imageNamed: texture)
         node.physicsBody = SKPhysicsBody.init(rectangleOf: node.size)
-        super.init(nameEnemy: "barrel", typeEnemy: "barrel", breakable: true)
+        super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
+
 }
 
 class Anvil: Enemy {
@@ -42,6 +52,11 @@ class Anvil: Enemy {
         self.texture = "anvil"
         node = SKSpriteNode(imageNamed: texture)
         node.physicsBody = SKPhysicsBody.init(rectangleOf: node.size)
-        super.init(nameEnemy: "anvil", typeEnemy: "anvil", breakable: false)
+        super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
+    
+    
+    
+    
+
 }
