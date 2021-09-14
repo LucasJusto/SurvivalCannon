@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "BG_menu.png",
+      "filename" : "BG_novo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BG_menu@2x.png",
+      "filename" : "BG_novo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BG_menu@3x.png",
+      "filename" : "BG_novo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

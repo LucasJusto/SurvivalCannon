@@ -19,7 +19,6 @@ class Button: SKSpriteNode {
         self.position = position
         self.isUserInteractionEnabled = true
         self.name = "mainMenuButton"
-        self.zPosition = 1
         
         let label = SKLabelNode(text: text)
         label.fontSize = self.size.height * 0.60
@@ -27,7 +26,7 @@ class Button: SKSpriteNode {
         label.fontName = "Copperplate"
         label.verticalAlignmentMode = .center
         label.name = self.name
-        label.zPosition = 2
+        label.zPosition = 1
         self.addChild(label)
     }
     
