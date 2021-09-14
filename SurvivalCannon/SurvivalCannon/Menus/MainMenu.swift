@@ -19,11 +19,6 @@ class MainMenu: SKSpriteNode {
         self.zPosition = 700
         self.name = "mainMenu"
         
-        let background: SKSpriteNode = SKSpriteNode(imageNamed: "BG_menu")
-        background.size = CGSize(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 1)
-        
-        background.zPosition = 0
-        self.addChild(background)
         
         var y = UIScreen.main.bounds.height * -0.02
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "PLAY", action: {
