@@ -10,18 +10,32 @@ import SpriteKit
 
 class Toggle: SKSpriteNode {
     unowned var parentMenu: SKSpriteNode
-    var action: () -> ()
+    var value: Bool
+    let title: String
     
-    init(parentMenu: SKSpriteNode, position: CGPoint, action: @escaping () -> ()) {
+    init(parentMenu: SKSpriteNode, position: CGPoint, title: String, value: Bool) {
         self.parentMenu = parentMenu
-        self.action = action
+        self.value = value
+        self.title = title
         super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: parentMenu.size.width * 0.5, height: parentMenu.size.height * 0.06))
         self.position = position
         self.isUserInteractionEnabled = true
         self.name = "mainMenuButton"
         self.zPosition = 1
+        addLabels()
+    }
+    
+    func addLabels() {
+        let title = SKLabelNode(text: title)
+        title.fontSize = self.size.height * 0.60
+        title.fontColor = UIColor(named: "buttonTextColor")
+        title.fontName = "Copperplate"
+        title.position = CGPoint(x: 0, y: self.size.height * 0.60)
+        title.name = self.name
+        title.zPosition = 2
+        self.addChild(title)
         
-        let label = SKLabelNode(text: "ON")
+        let label = SKLabelNode(text: "\(getValueText())")
         label.fontSize = self.size.height * 0.60
         label.fontColor = UIColor(named: "buttonTextColor")
         label.fontName = "Copperplate"
@@ -29,6 +43,13 @@ class Toggle: SKSpriteNode {
         label.name = self.name
         label.zPosition = 2
         self.addChild(label)
+    }
+    
+    func getValueText() -> String {
+        if value {
+            return "ON"
+        }
+        return "OFF"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,7 +70,9 @@ class Toggle: SKSpriteNode {
         let node = self.atPoint(location ?? .zero)
         
         if node.name == self.name {
-            self.action()
+            value.toggle()
+            removeAllChildren()
+            addLabels()
         }
     }
 }

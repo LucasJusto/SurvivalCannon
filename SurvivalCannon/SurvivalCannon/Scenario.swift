@@ -22,10 +22,15 @@ class Scenario: SKScene {
         self.addChild(background)
         
         // Adds main menu
-        let mainMenu = MainMenu(parentScene: self)
-        mainMenu.position = CGPoint(x: 0, y: 0)
-        mainMenu.size = CGSize(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height)
-        self.addChild(mainMenu)
+//        let mainMenu = MainMenu(parentScene: self)
+//        mainMenu.position = CGPoint(x: 0, y: 0)
+//        mainMenu.size = CGSize(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height)
+//        self.addChild(mainMenu)
+        
+        let settingsMenu = SettingsMenu(parentScene: self, sound: true, music: false)
+        settingsMenu.position = CGPoint(x: 0, y: 0)
+        settingsMenu.size = CGSize(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height)
+        self.addChild(settingsMenu)
     }
     
 }
