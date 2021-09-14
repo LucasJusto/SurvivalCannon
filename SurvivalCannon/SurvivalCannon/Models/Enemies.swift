@@ -7,7 +7,7 @@
 import Foundation
 import SpriteKit
 
-class Enemy{
+class Enemy {
     
     var nameEnemy: String
     var typeEnemy: String
