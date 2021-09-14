@@ -14,9 +14,9 @@ class Cannon {
     
     init() {
         health = 100
-        let texture = SKTexture(imageNamed: "cannon")
+        let texture = SKTexture(imageNamed: "Cannon")
         node = SKSpriteNode(texture: texture)
-        node.name = "cannon"
+        node.name = "Cannon"
         node.zPosition = 1
         node.size = CGSize(width: UIScreen.main.bounds.height * 0.87 * 0.3, height: UIScreen.main.bounds.height * 0.3)
         node.physicsBody?.contactTestBitMask = node.physicsBody!.collisionBitMask
