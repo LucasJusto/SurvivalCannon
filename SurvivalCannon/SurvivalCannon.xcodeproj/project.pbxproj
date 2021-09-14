@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4865B64326EFE5A500AFC273 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4865B64226EFE5A500AFC273 /* GameKit.framework */; };
 		4878312E26EA973400E215DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878312D26EA973400E215DB /* AppDelegate.swift */; };
 		4878313626EA973400E215DB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878313526EA973400E215DB /* GameViewController.swift */; };
 		4878313926EA973400E215DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4878313726EA973400E215DB /* Main.storyboard */; };
 		4878313B26EA973600E215DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4878313A26EA973600E215DB /* Assets.xcassets */; };
 		48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BBB0CA26EBD371003EE43C /* Scenario.swift */; };
-		B499DBDD26F1242200817AB4 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499DBDC26F1242200817AB4 /* FinalScore.swift */; };
-		B4B202F326EFD53C00E4EBA9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202F026EFD53C00E4EBA9 /* MainMenu.swift */; };
-		B4B202F426EFD53C00E4EBA9 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202F226EFD53C00E4EBA9 /* MainMenuButton.swift */; };
-		ECC7A33026EFB8D700F9DDE1 /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */; };
+		B48867EF26F10AA7002269D7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48867EE26F10AA7002269D7 /* Button.swift */; };
+		B499DBDF26F124D300817AB4 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499DBDE26F124D300817AB4 /* FinalScore.swift */; };
+		B499DBE126F124DF00817AB4 /* Enemys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499DBE026F124DF00817AB4 /* Enemys.swift */; };
+		B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */; };
+		B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */; };
+		B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85726EFD9FD0098FBBB /* Cannon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4865B64226EFE5A500AFC273 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4878312A26EA973400E215DB /* SurvivalCannon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurvivalCannon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4878312D26EA973400E215DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4878313526EA973400E215DB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -26,10 +30,12 @@
 		4878313A26EA973600E215DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4878313C26EA973600E215DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BBB0CA26EBD371003EE43C /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
-		B499DBDC26F1242200817AB4 /* FinalScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScore.swift; sourceTree = "<group>"; };
-		B4B202F026EFD53C00E4EBA9 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		B4B202F226EFD53C00E4EBA9 /* MainMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
-		ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
+		B48867EE26F10AA7002269D7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		B499DBDE26F124D300817AB4 /* FinalScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScore.swift; sourceTree = "<group>"; };
+		B499DBE026F124DF00817AB4 /* Enemys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemys.swift; sourceTree = "<group>"; };
+		B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
+		B4D4F85726EFD9FD0098FBBB /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +43,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4865B64326EFE5A500AFC273 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4865B64126EFE5A500AFC273 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4865B64226EFE5A500AFC273 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4878312126EA973400E215DB = {
 			isa = PBXGroup;
 			children = (
 				4878312C26EA973400E215DB /* SurvivalCannon */,
 				4878312B26EA973400E215DB /* Products */,
+				4865B64126EFE5A500AFC273 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,40 +78,42 @@
 		4878312C26EA973400E215DB /* SurvivalCannon */ = {
 			isa = PBXGroup;
 			children = (
-				B4B202EF26EFD53C00E4EBA9 /* Menus */,
-				ECC7A32E26EFB89800F9DDE1 /* Models */,
+				B4D4F85626EFD9FD0098FBBB /* Models */,
+				B4B202E926EFBC1700E4EBA9 /* Menus */,
 				4878312D26EA973400E215DB /* AppDelegate.swift */,
 				4878313526EA973400E215DB /* GameViewController.swift */,
+				B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */,
 				4878313726EA973400E215DB /* Main.storyboard */,
 				4878313A26EA973600E215DB /* Assets.xcassets */,
 				4878313C26EA973600E215DB /* Info.plist */,
 				48BBB0CA26EBD371003EE43C /* Scenario.swift */,
-				B499DBDC26F1242200817AB4 /* FinalScore.swift */,
 			);
 			path = SurvivalCannon;
 			sourceTree = "<group>";
 		};
-		B4B202EF26EFD53C00E4EBA9 /* Menus */ = {
+		B4B202E926EFBC1700E4EBA9 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				B4B202F126EFD53C00E4EBA9 /* Buttons */,
-				B4B202F026EFD53C00E4EBA9 /* MainMenu.swift */,
+				B4B202EA26EFBC2200E4EBA9 /* Buttons */,
+				B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */,
+				B499DBDE26F124D300817AB4 /* FinalScore.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
 		};
-		B4B202F126EFD53C00E4EBA9 /* Buttons */ = {
+		B4B202EA26EFBC2200E4EBA9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				B4B202F226EFD53C00E4EBA9 /* MainMenuButton.swift */,
+				B48867EE26F10AA7002269D7 /* Button.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		ECC7A32E26EFB89800F9DDE1 /* Models */ = {
+		B4D4F85626EFD9FD0098FBBB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ECC7A32F26EFB8D700F9DDE1 /* Cannon.swift */,
+				B499DBE026F124DF00817AB4 /* Enemys.swift */,
+				B4D4F85726EFD9FD0098FBBB /* Cannon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,13 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC7A33026EFB8D700F9DDE1 /* Cannon.swift in Sources */,
-				B4B202F326EFD53C00E4EBA9 /* MainMenu.swift in Sources */,
 				48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */,
+				B499DBDF26F124D300817AB4 /* FinalScore.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
+				B48867EF26F10AA7002269D7 /* Button.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
-				B4B202F426EFD53C00E4EBA9 /* MainMenuButton.swift in Sources */,
-				B499DBDD26F1242200817AB4 /* FinalScore.swift in Sources */,
+				B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */,
+				B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */,
+				B499DBE126F124DF00817AB4 /* Enemys.swift in Sources */,
+				B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +334,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6GD2RK7JQN;
 				INFOPLIST_FILE = SurvivalCannon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,6 +344,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LucasJusto.SurvivalCannon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = SurvivalCannonDev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,7 +355,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6GD2RK7JQN;
 				INFOPLIST_FILE = SurvivalCannon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -342,6 +365,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LucasJusto.SurvivalCannon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = SurvivalCannonDev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
