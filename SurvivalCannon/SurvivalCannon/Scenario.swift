@@ -23,9 +23,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         setBackground()
         setMainMenu()
-//        setSettings()
-//        setGround()
-//        setCannon()
     }
     
     func setMainMenu() {

@@ -20,7 +20,11 @@ class MainMenu: SKSpriteNode {
         
         var y = UIScreen.main.bounds.height * -0.07
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "PLAY", action: {
-            print("PLAY")
+            guard let scenario = parentScene as? Scenario else { return }
+            scenario.removeAllChildren()
+            scenario.setBackground()
+            scenario.setGround()
+            scenario.setCannon()
         }))
         
         y = UIScreen.main.bounds.height * -0.17
@@ -32,7 +36,10 @@ class MainMenu: SKSpriteNode {
         
         y = UIScreen.main.bounds.height * -0.27
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "SETTINGS", action: {
-            print("SETTINGS")
+            guard let scenario = parentScene as? Scenario else { return }
+            scenario.removeAllChildren()
+            scenario.setBackground()
+            scenario.setSettings()
         }))
     }
     

@@ -21,10 +21,10 @@ class SettingsMenu: SKSpriteNode {
         self.position = CGPoint(x: 0, y: 0)
         self.isUserInteractionEnabled = true
         
-        var y = UIScreen.main.bounds.height * -0.07
+        var y = UIScreen.main.bounds.height * -0.14
         self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "SOUND", value: false))
         
-        y = UIScreen.main.bounds.height * -0.17
+        y = UIScreen.main.bounds.height * -0.24
         self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "MUSIC", value: true))
         
     }
