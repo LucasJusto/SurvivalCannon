@@ -13,12 +13,12 @@
 		4878313926EA973400E215DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4878313726EA973400E215DB /* Main.storyboard */; };
 		4878313B26EA973600E215DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4878313A26EA973600E215DB /* Assets.xcassets */; };
 		48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BBB0CA26EBD371003EE43C /* Scenario.swift */; };
+		B44EED0726F10BD900256124 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44EED0626F10BD900256124 /* SettingsMenu.swift */; };
+		B44EED0926F10BE000256124 /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44EED0826F10BE000256124 /* Toggle.swift */; };
+		B48867EF26F10AA7002269D7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48867EE26F10AA7002269D7 /* Button.swift */; };
 		B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */; };
-		B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */; };
 		B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */; };
 		B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85726EFD9FD0098FBBB /* Cannon.swift */; };
-		B4D4F85A26EFDE5C0098FBBB /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */; };
-		B4D4F85C26EFDEA70098FBBB /* SettingsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +30,12 @@
 		4878313A26EA973600E215DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4878313C26EA973600E215DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BBB0CA26EBD371003EE43C /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		B44EED0626F10BD900256124 /* SettingsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		B44EED0826F10BE000256124 /* Toggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
+		B48867EE26F10AA7002269D7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		B4D4F85726EFD9FD0098FBBB /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
-		B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
-		B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 			children = (
 				B4B202EA26EFBC2200E4EBA9 /* Buttons */,
 				B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */,
-				B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */,
+				B44EED0626F10BD900256124 /* SettingsMenu.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -104,8 +104,8 @@
 		B4B202EA26EFBC2200E4EBA9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */,
-				B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */,
+				B48867EE26F10AA7002269D7 /* Button.swift */,
+				B44EED0826F10BE000256124 /* Toggle.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -187,11 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44EED0926F10BE000256124 /* Toggle.swift in Sources */,
 				48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */,
-				B4D4F85A26EFDE5C0098FBBB /* SettingsMenu.swift in Sources */,
-				B4D4F85C26EFDEA70098FBBB /* SettingsToggle.swift in Sources */,
-				B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
+				B48867EF26F10AA7002269D7 /* Button.swift in Sources */,
+				B44EED0726F10BD900256124 /* SettingsMenu.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
 				B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */,
 				B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */,

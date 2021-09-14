@@ -1,5 +1,5 @@
 //
-//  MainMenuButton.swift
+//  SettingsToggle.swift
 //  SurvivalCannon
 //
 //  Created by João Brentano on 13/09/21.
@@ -8,20 +8,20 @@
 import Foundation
 import SpriteKit
 
-class MainMenuButton: SKSpriteNode {
-    unowned var mainMenu: MainMenu
+class Toggle: SKSpriteNode {
+    unowned var parentMenu: SKSpriteNode
     var action: () -> ()
     
-    init(mainMenu: MainMenu, position: CGPoint, text: String, action: @escaping () -> ()) {
-        self.mainMenu = mainMenu
+    init(parentMenu: SKSpriteNode, position: CGPoint, action: @escaping () -> ()) {
+        self.parentMenu = parentMenu
         self.action = action
-        super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: mainMenu.size.width * 0.5, height: mainMenu.size.height * 0.06))
+        super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: parentMenu.size.width * 0.5, height: parentMenu.size.height * 0.06))
         self.position = position
         self.isUserInteractionEnabled = true
         self.name = "mainMenuButton"
         self.zPosition = 1
         
-        let label = SKLabelNode(text: text)
+        let label = SKLabelNode(text: "ON")
         label.fontSize = self.size.height * 0.60
         label.fontColor = UIColor(named: "buttonTextColor")
         label.fontName = "Copperplate"

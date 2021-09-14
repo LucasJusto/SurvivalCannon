@@ -26,20 +26,19 @@ class SettingsMenu: SKSpriteNode {
         self.addChild(background)
         
         var y = UIScreen.main.bounds.height * -0.02
-        self.addChild(MainMenuButton(mainMenu: self, position: CGPoint(x: 0, y: y), text: "PLAY", action: {
+        self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "PLAY", action: {
             print("PLAY")
         }))
         
         y = UIScreen.main.bounds.height * -0.12
-        self.addChild(MainMenuButton(mainMenu: self, position: CGPoint(x: 0, y: y), text: "RANKING", action: {
+        self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "RANKING", action: {
             if let view = parentScene.view?.next as? GameViewController {
                 //GameCenter.presentLeaderboard(view: view)
             }
         }))
         
-        
         y = UIScreen.main.bounds.height * -0.22
-        self.addChild(MainMenuButton(mainMenu: self, position: CGPoint(x: 0, y: y), text: "SETTINGS", action: {
+        self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), text: "SETTINGS", action: {
             print("SETTINGS")
         }))
     }
