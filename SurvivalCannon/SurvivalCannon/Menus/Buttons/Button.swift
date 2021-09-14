@@ -8,14 +8,14 @@
 import Foundation
 import SpriteKit
 
-class MainMenuButton: SKSpriteNode {
-    unowned var mainMenu: MainMenu
+class Button: SKSpriteNode {
+    unowned var parentMenu: SKSpriteNode
     var action: () -> ()
     
-    init(mainMenu: MainMenu, position: CGPoint, text: String, action: @escaping () -> ()) {
-        self.mainMenu = mainMenu
+    init(parentMenu: SKSpriteNode, position: CGPoint, text: String, action: @escaping () -> ()) {
+        self.parentMenu = parentMenu
         self.action = action
-        super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: mainMenu.size.width * 0.5, height: mainMenu.size.height * 0.06))
+        super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: parentMenu.size.width * 0.5, height: parentMenu.size.height * 0.06))
         self.position = position
         self.isUserInteractionEnabled = true
         self.name = "mainMenuButton"
