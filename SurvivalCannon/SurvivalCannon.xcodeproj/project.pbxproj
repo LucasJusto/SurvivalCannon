@@ -17,6 +17,8 @@
 		B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */; };
 		B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */; };
 		B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85726EFD9FD0098FBBB /* Cannon.swift */; };
+		B4D4F85A26EFDE5C0098FBBB /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */; };
+		B4D4F85C26EFDEA70098FBBB /* SettingsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		B4D4F85726EFD9FD0098FBBB /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
+		B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			children = (
 				B4B202EA26EFBC2200E4EBA9 /* Buttons */,
 				B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */,
+				B4D4F85926EFDE5C0098FBBB /* SettingsMenu.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B202EB26EFBC3000E4EBA9 /* MainMenuButton.swift */,
+				B4D4F85B26EFDEA70098FBBB /* SettingsToggle.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -182,6 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */,
+				B4D4F85A26EFDE5C0098FBBB /* SettingsMenu.swift in Sources */,
+				B4D4F85C26EFDEA70098FBBB /* SettingsToggle.swift in Sources */,
 				B4B202EC26EFBC3000E4EBA9 /* MainMenuButton.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
