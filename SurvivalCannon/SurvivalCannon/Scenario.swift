@@ -21,7 +21,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
         setBackground()
-        setMainMenu()
+        setGround()
+        setCannon()
     }
     
     func setMainMenu() {
@@ -65,28 +66,26 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateGyroscope() {
-        if movementManager.isGyroAvailable {
-            movementManager.gyroUpdateInterval = gyroscopeUpdateRate
-            movementManager.startGyroUpdates(to: .main) { data, error in
-                if let dataNotNull = data {
-                    let zAxis = dataNotNull.rotationRate.z
-                    //moving right
-                    let minZAxisChangeRight = -0.1 //at least -0.5 variation at z axis to move
-                    let minZAxisChangeLeft = 0.1 //at least -0.5 variation at z axis to move
-                    let pixelsToWalk: CGFloat = 3 //walks 3 pixels at each update
-                    if zAxis < minZAxisChangeRight {
-                        let nextPositionX = self.cannon.node.position.x + pixelsToWalk
-                        if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
-                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
-                        }
+        if movementManager.isDeviceMotionAvailable {
+            movementManager.deviceMotionUpdateInterval = gyroscopeUpdateRate
+            movementManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical, to: .main) { (data, _) in
+                guard let validData = data else { return }
+                let zAxisChange = validData.attitude.roll
+                let pixelsToWalk: CGFloat = 3
+                let minMovementToMoveRight = 0.5// at least 0.5 change at zAxis to move right
+                let minMovementToMoveleft = -0.5// at least -0.5 change at zAxis to move left
+                //move right
+                if zAxisChange > minMovementToMoveRight {
+                    let nextPositionX = self.cannon.node.position.x + pixelsToWalk
+                    if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
+                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
                     }
-                    if zAxis > minZAxisChangeLeft {
-                        let nextPositionX = self.cannon.node.position.x - pixelsToWalk
-                        if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
-                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
-                        }
+                }
+                if zAxisChange < minMovementToMoveleft {
+                    let nextPositionX = self.cannon.node.position.x - pixelsToWalk
+                    if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
+                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
                     }
-                    
                 }
             }
         }
