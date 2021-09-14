@@ -12,7 +12,6 @@ class Cannon {
     var health: Int
     var node: SKSpriteNode
     
-    
     init() {
         health = 100
         let texture = SKTexture(imageNamed: "Cannon")
