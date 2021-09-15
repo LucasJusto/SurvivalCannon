@@ -16,7 +16,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     let cannon: Cannon = Cannon()
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-    var cannonBalls: [CannonBall] = [CannonBall]()
     
     
     override func didMove(to view: SKView) {
@@ -25,6 +24,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         setBackground()
         setGround()
         setCannon()
+        startSpawningEnemies()
     }
     
     func setMainMenu() {
@@ -112,7 +112,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 50), duration: 0.01)
         cannonBall.run(impulseAction)
         self.addChild(cannonBall)
-        self.cannonBalls.append(cannonBall)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -168,17 +167,25 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func checkAndRemoveCannonBalls() {
         //it needs to use a copy, otherwise it will produce index out of bounds because of the self.cannonBalls.remove
-        let copyOfCannonBalls = cannonBalls.map { cannonBall in
-            cannonBall
+        let copyOfSelfChildren = self.children.map { node in
+            node
         }
-        if copyOfCannonBalls.count > 0 {
-            for i in 0...cannonBalls.count-1 {
-                let cannonBall = copyOfCannonBalls[i]
+        
+        if copyOfSelfChildren.count > 0 {
+            for i in 0...copyOfSelfChildren.count-1 {
+                let cannonBall = copyOfSelfChildren[i]
                 if cannonBall.position.y > screenHeight/2 {
                     cannonBall.removeFromParent()
-                    self.cannonBalls.remove(at: i)
                 }
             }
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if (contact.bodyA.node?.name == "anvil" || contact.bodyB.node?.name == "anvil") && (contact.bodyA.node?.name == "CannonBall" || contact.bodyB.node?.name == "CannonBall") {
+            //contact between anvil and cannonBall
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
         }
     }
     
