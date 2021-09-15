@@ -27,7 +27,7 @@ class Toggle: SKSpriteNode {
     
     func addLabels() {
         let title = SKLabelNode(text: title)
-        title.fontSize = self.size.height * 0.60
+        title.fontSize = self.size.height * 0.40
         title.fontColor = UIColor(named: "toggleTitleColor")
         title.fontName = "Copperplate"
         title.position = CGPoint(x: 0, y: self.size.height * 0.60)

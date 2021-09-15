@@ -31,6 +31,25 @@ class Button: SKSpriteNode {
         self.addChild(label)
     }
     
+    init(parentMenu: SKSpriteNode, position: CGPoint, size: CGSize, text: String, action: @escaping () -> ()) {
+        self.parentMenu = parentMenu
+        self.action = action
+        super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: size)
+        self.position = position
+        self.isUserInteractionEnabled = true
+        self.name = "mainMenuButton"
+        self.zPosition = 1
+        
+        let label = SKLabelNode(text: text)
+        label.fontSize = self.size.height * 0.60
+        label.fontColor = UIColor(named: "buttonTextColor")
+        label.fontName = "Copperplate"
+        label.verticalAlignmentMode = .center
+        label.name = self.name
+        label.zPosition = 2
+        self.addChild(label)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
