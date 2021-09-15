@@ -21,6 +21,7 @@
 		B4B202E826EFBB2000E4EBA9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */; };
 		B4B7157D26EFE50D0059FEA2 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */; };
 		B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F85726EFD9FD0098FBBB /* Cannon.swift */; };
+		ECC7A33D26F1282800F9DDE1 /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7A33C26F1282800F9DDE1 /* ScoreLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B4B7157C26EFE50D0059FEA2 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		B4D4F85726EFD9FD0098FBBB /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
+		ECC7A33C26F1282800F9DDE1 /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoreLabel.swift; path = SurvivalCannon/Menus/Buttons/ScoreLabel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		B4B202E926EFBC1700E4EBA9 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				ECC7A33B26F127EE00F9DDE1 /* Labels */,
 				B4B202EA26EFBC2200E4EBA9 /* Buttons */,
 				B4B202E726EFBB2000E4EBA9 /* MainMenu.swift */,
 				B499DBE226F12AC800817AB4 /* SettingsMenu.swift */,
@@ -122,6 +125,14 @@
 				B4D4F85726EFD9FD0098FBBB /* Cannon.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ECC7A33B26F127EE00F9DDE1 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				ECC7A33C26F1282800F9DDE1 /* ScoreLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				B499DBE326F12AC800817AB4 /* SettingsMenu.swift in Sources */,
 				B499DBDF26F124D300817AB4 /* FinalScore.swift in Sources */,
 				4878313626EA973400E215DB /* GameViewController.swift in Sources */,
+				ECC7A33D26F1282800F9DDE1 /* ScoreLabel.swift in Sources */,
 				B48867EF26F10AA7002269D7 /* Button.swift in Sources */,
 				4878312E26EA973400E215DB /* AppDelegate.swift in Sources */,
 				B4D4F85826EFD9FD0098FBBB /* Cannon.swift in Sources */,
