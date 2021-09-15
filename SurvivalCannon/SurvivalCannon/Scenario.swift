@@ -17,12 +17,15 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
+    
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
         setBackground()
         setGround()
         setCannon()
+        var barrelTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyBarrel"), userInfo: nil, repeats: true)
+        var anvilTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyAnvil"), userInfo: nil, repeats: true)
     }
     
     func setMainMenu() {
@@ -30,8 +33,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         mainMenu.position = CGPoint(x: 0, y: 0)
         mainMenu.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.addChild(mainMenu)
-        var barrelTimeSpawn = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("spawnEnemyBarrel"), userInfo: nil, repeats: true)
-        var anvilTimeSpawn = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("spawnEnemyAnvil"), userInfo: nil, repeats: true)
+       
         
     }
     
@@ -40,6 +42,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
 // MARK: - create and spawn enemys
     func createBarrel(x: CGFloat) -> SKSpriteNode{
         let barrel = Barrel(nameEnemy: "Barrel", typeEnemy: "barrel", breakable: true)
+        
         barrel.node.position = CGPoint(x: x, y: (self.scene?.size.height)!)
         barrel.node.zPosition = 1
         

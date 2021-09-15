@@ -22,27 +22,29 @@ class Enemy {
 
 class Barrel: Enemy {
     var health: Int
-    var texture: String
+    var texture: SKTexture
     var node: SKSpriteNode
     
     override init(nameEnemy: String, typeEnemy: String, breakable: Bool) {
         self.health = 100
-        self.texture = "barrel"
-        node = SKSpriteNode(imageNamed: texture)
-        node.physicsBody = SKPhysicsBody.init(rectangleOf: node.size)
+        self.texture = SKTexture(imageNamed: "barrel")
+        node = SKSpriteNode(texture:  texture)
+        node.size = CGSize(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.height * 0.2)
+        node.physicsBody = SKPhysicsBody( texture: node.texture!, size: node.texture!.size())
         super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
 
 }
 
 class Anvil: Enemy {
-    var texture:String
+    var texture:SKTexture
     var node:SKSpriteNode
     
     override init(nameEnemy: String, typeEnemy: String, breakable: Bool) {
-        self.texture = "anvil"
-        node = SKSpriteNode(imageNamed: texture)
-        node.physicsBody = SKPhysicsBody.init(rectangleOf: node.size)
+        self.texture = SKTexture(imageNamed: "anvil")
+        node = SKSpriteNode(texture: texture)
+        node.size = CGSize(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.1)
+        node.physicsBody = SKPhysicsBody( texture: node.texture!, size: node.texture!.size())
         super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
 }
