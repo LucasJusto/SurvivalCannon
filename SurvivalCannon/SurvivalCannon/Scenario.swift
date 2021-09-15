@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 import CoreMotion
 
-
 class Scenario: SKScene, SKPhysicsContactDelegate {
     
     let movementManager = CMMotionManager()
@@ -38,7 +37,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningEnemies() {
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyBarrel), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
+        //Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
     }
     
 // MARK: - create and spawn enemys
@@ -54,12 +53,28 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     @objc func spawnEnemyBarrel(){
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
-        let barrel = self.createBarrel(x: randomX)
+        
         let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
-        barrel.run(moveDown) {
-            barrel.removeFromParent()
+        var random = Int.random(in: 0...1)
+        
+        switch random {
+        case 0:
+            let barrel = self.createBarrel(x: randomX)
+            barrel.run(moveDown) {
+                barrel.removeFromParent()
+            }
+            addChild(barrel)
+        case 1:
+            let anvil = self.createAnvil(x: randomX)
+            anvil.run(moveDown) {
+                anvil.removeFromParent()
+            }
+            addChild(anvil)
+        default:
+            print("oops")
         }
-        addChild(barrel)
+        
+        
         
     }
     
@@ -71,16 +86,13 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         return anvil.node
     }
     
-    @objc func spawnEnemyAnvil() {
-        let maxRange = (self.scene?.size.width)! / 2.8
-        let randomX = CGFloat.random(in: -maxRange...maxRange)
-        let anvil = self.createAnvil(x: randomX)
-        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
-        anvil.run(moveDown) {
-            anvil.removeFromParent()
-        }
-        addChild(anvil)
-     }
+//    @objc func spawnEnemyAnvil() {
+//        let maxRange = (self.scene?.size.width)! / 2.8
+//        let randomX = CGFloat.random(in: -maxRange...maxRange)
+//
+//        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
+//
+//     }
     
     
     func setSettings() {
