@@ -16,6 +16,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     let cannon: Cannon = Cannon()
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    var lastTime: Double?
     
     
     override func didMove(to view: SKView) {
@@ -53,7 +54,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
         let barrel = self.createBarrel(x: randomX)
-        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 2)
+        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
         barrel.run(moveDown) {
             barrel.removeFromParent()
         }
@@ -73,7 +74,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
         let anvil = self.createAnvil(x: randomX)
-        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 2)
+        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
         anvil.run(moveDown) {
             anvil.removeFromParent()
         }
@@ -139,4 +140,16 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+//    override func update(_ currentTime: CFTimeInterval) {
+//        if(lastTime == nil){
+//            lastTime = currentTime
+//        }
+//        else{
+//            if((lastTime! - currentTime) >= 1){
+//                lastTime = currentTime
+//
+//            }
+//        }
+//    }
 }
