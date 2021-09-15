@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Cannon_new.png",
+      "filename" : "Rail.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Cannon_new@2x.png",
+      "filename" : "Rail@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Cannon_new@3x.png",
+      "filename" : "Rail@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
