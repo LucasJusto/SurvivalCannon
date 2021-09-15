@@ -24,8 +24,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         setBackground()
         setGround()
         setCannon()
-        //var barrelTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyBarrel"), userInfo: nil, repeats: true)
-        //var anvilTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyAnvil"), userInfo: nil, repeats: true)
     }
     
     func setMainMenu() {
@@ -35,7 +33,10 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         self.addChild(mainMenu)
     }
     
-    
+    func startSpawningEnemies() {
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyBarrel), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
+    }
     
 // MARK: - create and spawn enemys
     func createBarrel(x: CGFloat) -> SKSpriteNode{
