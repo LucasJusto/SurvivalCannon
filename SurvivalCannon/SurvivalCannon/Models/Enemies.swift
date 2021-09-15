@@ -18,16 +18,7 @@ class Enemy {
         self.typeEnemy = typeEnemy
         self.breakable = breakable
     }
-    
-    
-    
-    
-    
-    
 }
-
-
-
 
 class Barrel: Enemy {
     var health: Int
@@ -54,9 +45,4 @@ class Anvil: Enemy {
         node.physicsBody = SKPhysicsBody.init(rectangleOf: node.size)
         super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
-    
-    
-    
-    
-
 }
