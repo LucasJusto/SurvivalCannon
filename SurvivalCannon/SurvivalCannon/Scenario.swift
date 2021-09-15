@@ -25,8 +25,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         setBackground()
         setGround()
         setCannon()
-        var barrelTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyBarrel"), userInfo: nil, repeats: true)
-        var anvilTimeSpawn = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector("spawnEnemyAnvil"), userInfo: nil, repeats: true)
     }
     
     func setMainMenu() {
@@ -34,11 +32,12 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         mainMenu.position = CGPoint(x: 0, y: 0)
         mainMenu.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.addChild(mainMenu)
-       
-        
     }
     
-    
+    func startSpawningEnemies() {
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyBarrel), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
+    }
     
 // MARK: - create and spawn enemys
     func createBarrel(x: CGFloat) -> SKSpriteNode{
@@ -92,12 +91,17 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func setGround() {
         let ground = SKSpriteNode(color: .black, size: CGSize(width: screenWidth * 2, height: 1))
-        ground.position = CGPoint(x: 0, y: -screenHeight/2)
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
-        ground.zPosition = 1
+        ground.zPosition = -1
         ground.physicsBody?.contactTestBitMask = ground.physicsBody!.collisionBitMask
-        self.addChild(ground)
+        ground.alpha = 0
+        for child in self.children {
+            if child.name == "Rail" {
+                ground.position = CGPoint(x: 0, y: 2 - child.frame.size.height/2)
+                child.addChild(ground)
+            }
+        }
     }
     
     func setBackground() {
@@ -106,24 +110,30 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         // 9:16 proportion for the size
         background.size = CGSize(width: ((UIScreen.main.bounds.height * 1)/16)*9, height: UIScreen.main.bounds.height * 1)
         background.zPosition = 0
+        let rail: SKSpriteNode = SKSpriteNode(imageNamed: "Rail")
+        rail.size = CGSize(width: screenWidth, height: screenWidth * 0.078)
+        rail.position = CGPoint(x: 0, y: -screenHeight/2 + rail.size.height)
+        rail.zPosition = 1
+        rail.name = "Rail"
+        self.addChild(rail)
         self.addChild(background)
     }
     
     func setCannon() {
         self.cannon.node.position = CGPoint(x: 0, y: -screenHeight/2 + cannon.node.size.height)
         self.addChild(cannon.node)
-        updateGyroscope()
+        updateDeviceMotion()
     }
     
-    func updateGyroscope() {
+    func updateDeviceMotion() {
         if movementManager.isDeviceMotionAvailable {
             movementManager.deviceMotionUpdateInterval = gyroscopeUpdateRate
             movementManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical, to: .main) { (data, _) in
                 guard let validData = data else { return }
                 let zAxisChange = validData.attitude.roll
                 let pixelsToWalk: CGFloat = 3
-                let minMovementToMoveRight = 0.5// at least 0.5 change at zAxis to move right
-                let minMovementToMoveleft = -0.5// at least -0.5 change at zAxis to move left
+                let minMovementToMoveRight = 0.325// at least 0.325 change at zAxis to move right
+                let minMovementToMoveleft = -0.325// at least -0.325 change at zAxis to move left
                 //move right
                 if zAxisChange > minMovementToMoveRight {
                     let nextPositionX = self.cannon.node.position.x + pixelsToWalk
