@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 import CoreMotion
 
+
 class Scenario: SKScene, SKPhysicsContactDelegate {
     
     let movementManager = CMMotionManager()
@@ -25,6 +26,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         setBackground()
         setGround()
         setCannon()
+        startSpawningEnemies()
     }
     
     func setMainMenu() {
@@ -36,7 +38,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func startSpawningEnemies() {
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyBarrel), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
     }
     
 // MARK: - create and spawn enemys
