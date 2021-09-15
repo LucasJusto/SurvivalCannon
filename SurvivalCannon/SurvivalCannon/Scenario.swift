@@ -36,27 +36,23 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     }
     
     func startSpawningEnemies() {
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemyBarrel), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemy), userInfo: nil, repeats: true)
         //Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.spawnEnemyAnvil), userInfo: nil, repeats: true)
     }
     
 // MARK: - create and spawn enemys
     func createBarrel(x: CGFloat) -> SKSpriteNode{
         let barrel = Barrel(nameEnemy: "Barrel", typeEnemy: "barrel", breakable: true)
-        
         barrel.node.position = CGPoint(x: x, y: (self.scene?.size.height)!)
         barrel.node.zPosition = 1
-        
         return barrel.node
     }
     
-    @objc func spawnEnemyBarrel(){
+    @objc func spawnEnemy(){
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
-        
         let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
         var random = Int.random(in: 0...1)
-        
         switch random {
         case 0:
             let barrel = self.createBarrel(x: randomX)
@@ -73,16 +69,12 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         default:
             print("oops")
         }
-        
-        
-        
     }
     
     func createAnvil(x: CGFloat) -> SKSpriteNode{
         let anvil = Anvil(nameEnemy: "Anvil", typeEnemy: "anvil", breakable: false)
         anvil.node.position = CGPoint(x: x, y: (self.scene?.size.height)!)
         anvil.node.zPosition = 1
-        
         return anvil.node
     }
     
