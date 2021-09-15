@@ -16,6 +16,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     let cannon: Cannon = Cannon()
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    var cannonBalls: [CannonBall] = [CannonBall]()
     
     
     override func didMove(to view: SKView) {
@@ -103,6 +104,21 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func cannonShot(){
+        let cannonBall = CannonBall()
+        let cannonPosition = self.cannon.node.position
+        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + self.cannon.node.size.height/2 + cannonBall.size.height/2)
+        cannonBall.zPosition = 10
+        let impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 50), duration: 0.01)
+        cannonBall.run(impulseAction)
+        self.addChild(cannonBall)
+        self.cannonBalls.append(cannonBall)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        cannonShot()
+    }
+    
     func setBackground() {
         // Background set-up
         let background: SKSpriteNode = SKSpriteNode(imageNamed: "BG_menu")
@@ -148,5 +164,25 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+    }
+    
+    func checkAndRemoveCannonBalls() {
+        //it needs to use a copy, otherwise it will produce index out of bounds because of the self.cannonBalls.remove
+        let copyOfCannonBalls = cannonBalls.map { cannonBall in
+            cannonBall
+        }
+        if copyOfCannonBalls.count > 0 {
+            for i in 0...cannonBalls.count-1 {
+                let cannonBall = copyOfCannonBalls[i]
+                if cannonBall.position.y > screenHeight/2 {
+                    cannonBall.removeFromParent()
+                    self.cannonBalls.remove(at: i)
+                }
+            }
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        self.checkAndRemoveCannonBalls()
     }
 }
