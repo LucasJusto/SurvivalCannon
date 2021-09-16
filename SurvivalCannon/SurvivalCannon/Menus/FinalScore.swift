@@ -58,7 +58,7 @@ class FinalScore: SKSpriteNode {
             print(self.myScene.children)
             self.myScene.gameBegin()
         }
-        playAgainButton.zPosition = 1
+        playAgainButton.zPosition = 5
         
         let menuButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.1), text: "Menu") {
             self.myScene.scoreLabel.resetScore()
@@ -66,7 +66,7 @@ class FinalScore: SKSpriteNode {
             self.myScene.setBackground()
             self.myScene.setMainMenu()
         }
-        menuButton.zPosition = 1
+        menuButton.zPosition = 5
         
         self.addChild(background)
         self.addChild(backgroundScore)
