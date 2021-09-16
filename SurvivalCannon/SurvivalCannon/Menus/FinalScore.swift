@@ -40,7 +40,7 @@ class FinalScore: SKSpriteNode {
         
         let score: SKLabelNode = SKLabelNode(text: myScene.scoreLabel.node.text)
         score.fontName = font
-        score.fontSize = self.size.height * 0.1
+        score.fontSize = self.size.height * 0.07
         score.fontColor = color
         score.position = CGPoint(x: 0, y: self.size.height * 0.09)
         score.zPosition = 2
@@ -67,7 +67,6 @@ class FinalScore: SKSpriteNode {
             self.myScene.setMainMenu()
         }
         menuButton.zPosition = 1
-        menuButton.size = CGSize(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.05)
         
         self.addChild(background)
         self.addChild(backgroundScore)
