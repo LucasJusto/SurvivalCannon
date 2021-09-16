@@ -34,6 +34,7 @@ class Barrel: Enemy {
         node.size = CGSize(width:UIScreen.main.bounds.height * percentageOfScreenHeight , height: ((UIScreen.main.bounds.height * 0.13) * 1.38 ))
     
         node.physicsBody = SKPhysicsBody( texture: node.texture!, size: node.size)
+        node.physicsBody?.isDynamic = false
         super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
 
@@ -49,6 +50,7 @@ class Anvil: Enemy { // 1 de largura po 0.64 de altura
         node.name = "anvil"
         node.size = CGSize(width: ((UIScreen.main.bounds.height * 0.13)/0.64), height: UIScreen.main.bounds.height * 0.13)
         node.physicsBody = SKPhysicsBody( texture: node.texture!, size: node.size)
+        node.physicsBody?.isDynamic = false
         super.init(nameEnemy: nameEnemy, typeEnemy: typeEnemy, breakable: breakable)
     }
 }

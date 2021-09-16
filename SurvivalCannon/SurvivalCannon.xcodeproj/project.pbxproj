@@ -13,6 +13,10 @@
 		4878313626EA973400E215DB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878313526EA973400E215DB /* GameViewController.swift */; };
 		4878313926EA973400E215DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4878313726EA973400E215DB /* Main.storyboard */; };
 		4878313B26EA973600E215DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4878313A26EA973600E215DB /* Assets.xcassets */; };
+		48A8117B26F2AD7300174385 /* woodSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48A8117A26F2AD7300174385 /* woodSound.mp3 */; };
+		48A8117D26F2AE0800174385 /* metalSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48A8117C26F2AE0800174385 /* metalSound.mp3 */; };
+		48A8118126F2B50D00174385 /* mainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48A8118026F2B50D00174385 /* mainSound.mp3 */; };
+		48A8118326F2B6CC00174385 /* shotSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48A8118226F2B6CC00174385 /* shotSound.mp3 */; };
 		48BBB0CB26EBD371003EE43C /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BBB0CA26EBD371003EE43C /* Scenario.swift */; };
 		B48867EF26F10AA7002269D7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48867EE26F10AA7002269D7 /* Button.swift */; };
 		B499DBDF26F124D300817AB4 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499DBDE26F124D300817AB4 /* FinalScore.swift */; };
@@ -34,6 +38,10 @@
 		4878313826EA973400E215DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4878313A26EA973600E215DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4878313C26EA973600E215DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48A8117A26F2AD7300174385 /* woodSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woodSound.mp3; sourceTree = "<group>"; };
+		48A8117C26F2AE0800174385 /* metalSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = metalSound.mp3; sourceTree = "<group>"; };
+		48A8118026F2B50D00174385 /* mainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainSound.mp3; sourceTree = "<group>"; };
+		48A8118226F2B6CC00174385 /* shotSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotSound.mp3; sourceTree = "<group>"; };
 		48BBB0CA26EBD371003EE43C /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		B48867EE26F10AA7002269D7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		B499DBDE26F124D300817AB4 /* FinalScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScore.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 		4878312C26EA973400E215DB /* SurvivalCannon */ = {
 			isa = PBXGroup;
 			children = (
+				48A8117C26F2AE0800174385 /* metalSound.mp3 */,
+				48A8118026F2B50D00174385 /* mainSound.mp3 */,
+				48A8117A26F2AD7300174385 /* woodSound.mp3 */,
+				48A8118226F2B6CC00174385 /* shotSound.mp3 */,
 				B4D4F85626EFD9FD0098FBBB /* Models */,
 				B4B202E926EFBC1700E4EBA9 /* Menus */,
 				4878312D26EA973400E215DB /* AppDelegate.swift */,
@@ -195,7 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48A8117D26F2AE0800174385 /* metalSound.mp3 in Resources */,
 				4878313926EA973400E215DB /* Main.storyboard in Resources */,
+				48A8118126F2B50D00174385 /* mainSound.mp3 in Resources */,
+				48A8117B26F2AD7300174385 /* woodSound.mp3 in Resources */,
+				48A8118326F2B6CC00174385 /* shotSound.mp3 in Resources */,
 				4878313B26EA973600E215DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

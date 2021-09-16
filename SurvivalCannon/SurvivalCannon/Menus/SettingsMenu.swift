@@ -9,11 +9,11 @@ import Foundation
 import SpriteKit
 
 class SettingsMenu: SKSpriteNode {
-    var parentScene: SKScene?
+    var parentScene: Scenario?
     var sound: Bool
     var music: Bool
     
-    init(parentScene: SKScene, sound: Bool, music: Bool) {
+    init(parentScene: Scenario, sound: Bool, music: Bool) {
         self.sound = sound
         self.music = music
         super.init(texture: nil, color: .white, size: CGSize(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 1))
@@ -22,17 +22,24 @@ class SettingsMenu: SKSpriteNode {
         self.isUserInteractionEnabled = true
         
         var y = UIScreen.main.bounds.height * -0.07
-        self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "SOUND", value: false))
-        
+        if let musicBool = UserDefaults.standard.value(forKey: "isMusicEnabled") as? Bool {
+            self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "MUSIC", value: musicBool, isSound: false, scenario: self.parentScene!))
+        }
+        else {
+            self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "MUSIC", value: true, isSound: false, scenario: self.parentScene!))
+        }
         y = UIScreen.main.bounds.height * -0.17
-        self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "MUSIC", value: true))
-        
+        if let soundBool = UserDefaults.standard.value(forKey: "isSoundEnabled") as? Bool {
+            self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "SOUND", value: soundBool, isSound: true, scenario: self.parentScene!))
+        }
+        else {
+            self.addChild(Toggle(parentMenu: self, position: CGPoint(x: 0, y: y), title: "SOUND", value: true, isSound: true, scenario: self.parentScene!))
+        }
         y = UIScreen.main.bounds.height * -0.29
         self.addChild(Button(parentMenu: self, position: CGPoint(x: 0, y: y), size: CGSize(width: self.size.width * 0.3, height: self.size.height * 0.04), text: "BACK", action: {
-            guard let scenario = parentScene as? Scenario else { return }
-            scenario.removeAllChildren()
-            scenario.setBackground()
-            scenario.setMainMenu()
+            parentScene.removeAllButMusic()
+            parentScene.setBackground()
+            parentScene.setMainMenu()
         }))
     }
     

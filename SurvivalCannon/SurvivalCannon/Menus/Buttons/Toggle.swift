@@ -12,11 +12,15 @@ class Toggle: SKSpriteNode {
     unowned var parentMenu: SKSpriteNode
     var value: Bool
     let title: String
+    var isSound: Bool
+    let scenario: Scenario
     
-    init(parentMenu: SKSpriteNode, position: CGPoint, title: String, value: Bool) {
+    init(parentMenu: SKSpriteNode, position: CGPoint, title: String, value: Bool, isSound: Bool, scenario: Scenario) {
         self.parentMenu = parentMenu
         self.value = value
         self.title = title
+        self.isSound = isSound
+        self.scenario = scenario
         super.init(texture: SKTexture(imageNamed: "Button"), color: .green, size: CGSize(width: parentMenu.size.width * 0.5, height: parentMenu.size.height * 0.06))
         self.position = position
         self.isUserInteractionEnabled = true
@@ -70,6 +74,20 @@ class Toggle: SKSpriteNode {
         let node = self.atPoint(location ?? .zero)
         
         if node.name == self.name {
+            if isSound {
+                UserDefaults.standard.setValue(!value, forKey: "isSoundEnabled")
+                scenario.isSoundEnabled = !value
+            }
+            else {
+                UserDefaults.standard.setValue(!value, forKey: "isMusicEnabled")
+                scenario.isMusicEnabled = !value
+                if value {
+                    scenario.removeMusic()
+                }
+                else {
+                    scenario.setMusic()
+                }
+            }
             value.toggle()
             removeAllChildren()
             addLabels()

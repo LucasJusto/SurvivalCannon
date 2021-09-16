@@ -23,7 +23,10 @@ class ScoreLabel {
         node.zPosition = 2
     }
     
-    
+    func resetScore() {
+        count = 0
+        node.text = "Score: \(count)"
+    }
 
     func update() {
         count += 1
