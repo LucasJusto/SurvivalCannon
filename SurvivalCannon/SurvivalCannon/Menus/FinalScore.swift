@@ -55,7 +55,6 @@ class FinalScore: SKSpriteNode {
         let playAgainButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.01), text: "Try Again") {
             self.myScene.scoreLabel.resetScore()
             self.myScene.removeAllButMusic()
-            print(self.myScene.children)
             self.myScene.gameBegin()
         }
         playAgainButton.zPosition = 5
