@@ -163,7 +163,10 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let cannonPosition = self.cannon.node.position
         cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + self.cannon.node.size.height/2 + cannonBall.size.height/2)
         cannonBall.zPosition = 10
-        let impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: 50), duration: 0.01)
+        var impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/12), duration: 0.01)
+        if screenHeight > 1000 {
+            impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/3), duration: 0.01)
+        }
         cannonBall.run(impulseAction)
         self.addChild(cannonBall)
     }
@@ -186,7 +189,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         // Background set-up
         let background: SKSpriteNode = SKSpriteNode(imageNamed: "BG_menu")
         // 9:16 proportion for the size
-        background.size = CGSize(width: ((UIScreen.main.bounds.height * 1)/16)*9, height: UIScreen.main.bounds.height * 1)
+        //background.size = CGSize(width: ((UIScreen.main.bounds.height * 1)/16)*9, height: UIScreen.main.bounds.height * 1)
+        background.size = CGSize(width: screenWidth, height: screenHeight)
         background.zPosition = 0
         self.addChild(background)
     }
@@ -203,7 +207,10 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
             movementManager.startAccelerometerUpdates(to: .main) { data, error in
                 guard let validData = data else { return }
                 let xAxisAcceleration = validData.acceleration.x
-                let pixelsToWalk: CGFloat = 3
+                var pixelsToWalk: CGFloat = 3
+                if self.screenHeight > 1000 {
+                    pixelsToWalk = 5
+                }
                 let minMovementToMoveRight = 0.125// at least 0.125 acceleration at xAxis to move right
                 let minMovementToMoveleft = -0.125// at least -0.125 acceleration at xAxis to move left
                 //move right
