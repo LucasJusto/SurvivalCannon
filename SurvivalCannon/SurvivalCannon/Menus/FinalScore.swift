@@ -10,11 +10,11 @@ import SpriteKit
 
 
 class FinalScore: SKSpriteNode {
-    var myScene: SKScene?
+    var myScene: Scenario
     
-    init(scene: SKScene) {
-        super.init(texture: nil, color: .white, size: CGSize(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 1))
+    init(scene: Scenario) {
         self.myScene = scene
+        super.init(texture: nil, color: .white, size: CGSize(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 1))
         self.position = CGPoint(x: 0, y: 0)
         self.isUserInteractionEnabled = true
         self.name = "finalScore"
@@ -38,9 +38,9 @@ class FinalScore: SKSpriteNode {
         scoreLabel.position = CGPoint(x: 0, y: self.size.height * 0.2)
         scoreLabel.zPosition = 2
         
-        let score: SKLabelNode = SKLabelNode(text: "456")
+        let score: SKLabelNode = SKLabelNode(text: myScene.scoreLabel.node.text)
         score.fontName = font
-        score.fontSize = self.size.height * 0.15
+        score.fontSize = self.size.height * 0.1
         score.fontColor = color
         score.position = CGPoint(x: 0, y: self.size.height * 0.09)
         score.zPosition = 2
@@ -53,12 +53,18 @@ class FinalScore: SKSpriteNode {
         bestScore.zPosition = 2
         
         let playAgainButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.01), text: "Try Again") {
-            print("play again")
+            self.myScene.scoreLabel.resetScore()
+            self.myScene.removeAllButMusic()
+            print(self.myScene.children)
+            self.myScene.gameBegin()
         }
         playAgainButton.zPosition = 1
         
         let menuButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.1), text: "Menu") {
-            print("menu")
+            self.myScene.scoreLabel.resetScore()
+            self.myScene.removeAllButMusic()
+            self.myScene.setBackground()
+            self.myScene.setMainMenu()
         }
         menuButton.zPosition = 1
         menuButton.size = CGSize(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.05)
@@ -67,7 +73,7 @@ class FinalScore: SKSpriteNode {
         self.addChild(backgroundScore)
         self.addChild(scoreLabel)
         self.addChild(score)
-        self.addChild(bestScore)
+        //self.addChild(bestScore)
         self.addChild(playAgainButton)
         self.addChild(menuButton)
     }

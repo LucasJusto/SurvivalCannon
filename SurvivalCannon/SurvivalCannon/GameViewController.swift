@@ -29,8 +29,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 
                 view.ignoresSiblingOrder = true
                 
-//                view.showsFPS = true
-//                view.showsNodeCount = true
+                //view.showsFPS = true
+                view.showsNodeCount = true
             }
         }
     }
