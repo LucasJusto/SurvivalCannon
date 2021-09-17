@@ -108,7 +108,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     @objc func spawnEnemy(){
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
-        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: fromSkyToGroundEnemyTime)
+        let barrelHeight = UIScreen.main.bounds.height * 0.1 * 1.38
+        let moveDown = SKAction.moveTo(y: -((self.frame.size.height / 2) + barrelHeight/2), duration: fromSkyToGroundEnemyTime)
         let random = Int.random(in: 0...1)
         switch random {
             case 0:
@@ -220,9 +221,9 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 if self.isGameOn {
                     guard let validData = data else { return }
                     let xAxisAcceleration = validData.acceleration.x
-                    var pixelsToWalk: CGFloat = 3
+                    var pixelsToWalk: CGFloat = 3.5
                     if self.screenHeight > 1000 {
-                        pixelsToWalk = 5
+                        pixelsToWalk = 5.5
                     }
                     let minMovementToMoveRight = 0.125// at least 0.125 acceleration at xAxis to move right
                     let minMovementToMoveleft = -0.125// at least -0.125 acceleration at xAxis to move left
