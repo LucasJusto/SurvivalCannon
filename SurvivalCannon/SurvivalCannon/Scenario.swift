@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 class Scenario: SKScene, SKPhysicsContactDelegate {
     
@@ -160,13 +161,26 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func cannonShot(){
         let cannonBall = CannonBall()
-        cannonBall.shot(cannonPosition: self.cannon.node.position, cannonSize: self.cannon.node.size, screenHeight: screenHeight, scene: self)
+        let cannonPosition = self.cannon.node.position
+        let cannonSize = self.cannon.node.size
+        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + cannonSize.height/2 + cannonBall.size.height/2)
+        cannonBall.zPosition = 10
+        var impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/12), duration: 0.01)
+        if screenHeight > 1000 {
+            impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/3), duration: 0.01)
+        }
+        cannonBall.run(SKAction.sequence([impulseAction, .wait(forDuration: 0.5)])){
+            cannonBall.removeFromParent()
+        }
+        self.addChild(cannonBall)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         createAndPlaySound(soundName: "shotSound")
         cannonShot()
     }
+    
+    
     
     func setRail() {
         let rail: SKSpriteNode = SKSpriteNode(imageNamed: "Rail")
@@ -238,6 +252,20 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 sound.removeFromParent()
             }
         }
+//        var player: AVAudioPlayer?
+//        if let url = Bundle.main.path(forResource: soundName, ofType: "mp3") {
+//            do {
+//                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+//                try AVAudioSession.sharedInstance().setActive(true)
+//                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: url))
+//                if let playerNotNull = player {
+//                    playerNotNull.play()
+//                }
+//            }
+//            catch {
+//
+//            }
+//        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
