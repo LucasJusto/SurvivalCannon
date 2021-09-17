@@ -22,6 +22,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     var spawnEnemyTimer : Timer?
     var isSoundEnabled: Bool?
     var isMusicEnabled: Bool?
+    var isGameOn = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -52,6 +53,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         setGround()
         setCannon()
         startSpawningEnemies()
+        isGameOn = true
+        self.cannon.node.physicsBody?.isDynamic = true
     }
     
     func removeMusic() {
@@ -205,31 +208,33 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         if movementManager.isDeviceMotionAvailable {
             movementManager.deviceMotionUpdateInterval = gyroscopeUpdateRate
             movementManager.startAccelerometerUpdates(to: .main) { data, error in
-                guard let validData = data else { return }
-                let xAxisAcceleration = validData.acceleration.x
-                var pixelsToWalk: CGFloat = 3
-                if self.screenHeight > 1000 {
-                    pixelsToWalk = 5
-                }
-                let minMovementToMoveRight = 0.125// at least 0.125 acceleration at xAxis to move right
-                let minMovementToMoveleft = -0.125// at least -0.125 acceleration at xAxis to move left
-                //move right
-                if xAxisAcceleration > minMovementToMoveRight {
-                    let nextPositionX = self.cannon.node.position.x + pixelsToWalk
-                    if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
-                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                if self.isGameOn {
+                    guard let validData = data else { return }
+                    let xAxisAcceleration = validData.acceleration.x
+                    var pixelsToWalk: CGFloat = 3
+                    if self.screenHeight > 1000 {
+                        pixelsToWalk = 5
                     }
-                    else if self.cannon.node.position.x > self.screenWidth/2 || self.cannon.node.position.x <= -self.screenWidth/2 {
-                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                    let minMovementToMoveRight = 0.125// at least 0.125 acceleration at xAxis to move right
+                    let minMovementToMoveleft = -0.125// at least -0.125 acceleration at xAxis to move left
+                    //move right
+                    if xAxisAcceleration > minMovementToMoveRight {
+                        let nextPositionX = self.cannon.node.position.x + pixelsToWalk
+                        if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
+                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                        }
+                        else if self.cannon.node.position.x > self.screenWidth/2 || self.cannon.node.position.x <= -self.screenWidth/2 {
+                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                        }
                     }
-                }
-                if xAxisAcceleration < minMovementToMoveleft {
-                    let nextPositionX = self.cannon.node.position.x - pixelsToWalk
-                    if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
-                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
-                    }
-                    else if self.cannon.node.position.x > self.screenWidth/2 || self.cannon.node.position.x < -self.screenWidth/2 {
-                        self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                    if xAxisAcceleration < minMovementToMoveleft {
+                        let nextPositionX = self.cannon.node.position.x - pixelsToWalk
+                        if nextPositionX < self.screenWidth/2 && nextPositionX > -self.screenWidth/2{
+                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                        }
+                        else if self.cannon.node.position.x > self.screenWidth/2 || self.cannon.node.position.x < -self.screenWidth/2 {
+                            self.cannon.node.position = CGPoint(x: nextPositionX, y: self.cannon.node.position.y)
+                        }
                     }
                 }
             }
@@ -290,9 +295,18 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func removeEnemiesActions() {
+        for child in self.children {
+            if child.name == "barrel" || child.name == "anvil" {
+                child.removeAllActions()
+            }
+        }
+    }
+    
     func gameOver(){
-        removeAllButMusic()
-        setBackground()
+        self.removeEnemiesActions()
+        isGameOn = false
+        self.cannon.node.physicsBody?.isDynamic = false
         stopSpawningEnemies()
         GameCenter.storeScore(points: scoreLabel.count)
         let finalScore = FinalScore(scene: self)
