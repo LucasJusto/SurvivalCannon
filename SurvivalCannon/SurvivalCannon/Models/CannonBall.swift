@@ -20,4 +20,16 @@ class CannonBall: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func shot(cannonPosition: CGPoint, cannonSize: CGSize, screenHeight: CGFloat, scene: Scenario){
+        let cannonBall = self
+        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + cannonSize.height/2 + cannonBall.size.height/2)
+        cannonBall.zPosition = 10
+        var impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/12), duration: 0.01)
+        if screenHeight > 1000 {
+            impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/3), duration: 0.01)
+        }
+        cannonBall.run(impulseAction)
+        scene.addChild(cannonBall)
+    }
 }

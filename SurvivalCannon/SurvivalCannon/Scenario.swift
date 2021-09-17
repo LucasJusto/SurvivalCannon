@@ -160,15 +160,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func cannonShot(){
         let cannonBall = CannonBall()
-        let cannonPosition = self.cannon.node.position
-        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + self.cannon.node.size.height/2 + cannonBall.size.height/2)
-        cannonBall.zPosition = 10
-        var impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/12), duration: 0.01)
-        if screenHeight > 1000 {
-            impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/3), duration: 0.01)
-        }
-        cannonBall.run(impulseAction)
-        self.addChild(cannonBall)
+        cannonBall.shot(cannonPosition: self.cannon.node.position, cannonSize: self.cannon.node.size, screenHeight: screenHeight, scene: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
