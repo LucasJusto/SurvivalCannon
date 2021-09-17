@@ -101,12 +101,12 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     func createBarrel(x: CGFloat) -> SKSpriteNode{
         let barrel = Barrel(nameEnemy: "Barrel", typeEnemy: "barrel", breakable: true)
         barrel.node.position = CGPoint(x: x, y: screenHeight)
-        barrel.node.zPosition = 1
+        barrel.node.zPosition = 5
         return barrel.node
     }
     
     @objc func spawnEnemy(){
-        let maxRange = (self.scene?.size.width)! / 2.8
+        let maxRange = screenWidth / 2.5
         let randomX = CGFloat.random(in: -maxRange...maxRange)
         let barrelHeight = UIScreen.main.bounds.height * 0.1 * 1.38
         let moveDown = SKAction.moveTo(y: -((self.frame.size.height / 2) + barrelHeight/2), duration: fromSkyToGroundEnemyTime)
@@ -134,7 +134,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     func createAnvil(x: CGFloat) -> SKSpriteNode{
         let anvil = Anvil(nameEnemy: "Anvil", typeEnemy: "anvil", breakable: false)
         anvil.node.position = CGPoint(x: x, y: screenHeight)
-        anvil.node.zPosition = 1
+        anvil.node.zPosition = 5
         return anvil.node
     }
     
