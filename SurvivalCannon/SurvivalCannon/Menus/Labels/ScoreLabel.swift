@@ -29,10 +29,24 @@ class ScoreLabel {
     }
 
     func update() {
+        self.pointSinalizer()
         count += 1
         node.text = "Score: \(count)"
     }
     
+    func pointSinalizer() {
+        let point = SKLabelNode(text: "+1")
+        point.fontSize = UIScreen.main.bounds.height * 0.05
+        point.fontName = "Copperplate"
+        point.fontColor = hexStringToUIColor(hex: "#40200e")
+        point.zPosition = 50
+        point.position = CGPoint(x: self.node.position.x, y: self.node.position.y - UIScreen.main.bounds.height * 0.1)
+        let moveUP = SKAction.moveTo(y: self.node.position.y, duration: 0.5)
+        point.run(moveUP) {
+            point.removeFromParent()
+        }
+        self.node.parent!.addChild(point)
+    }
     
 }
 
