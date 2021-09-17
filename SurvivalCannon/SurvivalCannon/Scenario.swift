@@ -23,6 +23,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     var isSoundEnabled: Bool?
     var isMusicEnabled: Bool?
     var isGameOn = false
+    var fromSkyToGroundEnemyTime: Double = 4
+    var fromSkyToGroundEnemyTimeMin: Double = 1
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -100,7 +102,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     @objc func spawnEnemy(){
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
-        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: 4)
+        let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: fromSkyToGroundEnemyTime)
         let random = Int.random(in: 0...1)
         switch random {
             case 0:
