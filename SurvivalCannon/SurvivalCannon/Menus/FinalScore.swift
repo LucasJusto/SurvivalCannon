@@ -33,7 +33,7 @@ class FinalScore: SKSpriteNode {
         scoreLabel.position = CGPoint(x: 0, y: self.size.height * 0.2)
         scoreLabel.zPosition = 25
         
-        let score: SKLabelNode = SKLabelNode(text: myScene.scoreLabel.node.text)
+        let score: SKLabelNode = SKLabelNode(text: "\(myScene.scoreLabel.count)")
         score.fontName = font
         score.fontSize = self.size.height * 0.07
         score.fontColor = color
