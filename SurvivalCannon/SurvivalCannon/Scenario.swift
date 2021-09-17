@@ -228,22 +228,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func checkAndRemoveCannonBalls() {
-        //it needs to use a copy, otherwise it will produce index out of bounds because of the self.cannonBalls.remove
-        let copyOfSelfChildren = self.children.map { node in
-            node
-        }
-        
-        if copyOfSelfChildren.count > 0 {
-            for i in 0...copyOfSelfChildren.count-1 {
-                let cannonBall = copyOfSelfChildren[i]
-                if cannonBall.position.y > screenHeight/2 && cannonBall.name == "CannonBall"{
-                    cannonBall.removeFromParent()
-                }
-            }
-        }
-    }
-    
     func createAndPlaySound(soundName: String) {
         if self.isSoundEnabled! {
             let sound = SKAudioNode(fileNamed: soundName)
@@ -292,6 +276,5 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        self.checkAndRemoveCannonBalls()
     }
 }
