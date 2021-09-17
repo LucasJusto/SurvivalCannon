@@ -238,14 +238,14 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func checkAndRemoveCannonBalls() {
         //it needs to use a copy, otherwise it will produce index out of bounds because of the self.cannonBalls.remove
-        let copyOfSelfChildren = self.children.map { node in
-            node
+        let copyOfSelfChildren = self.children.filter { node in
+            node.name == "CannonBall"
         }
         
         if copyOfSelfChildren.count > 0 {
             for i in 0...copyOfSelfChildren.count-1 {
                 let cannonBall = copyOfSelfChildren[i]
-                if cannonBall.position.y > screenHeight/2 && cannonBall.name == "CannonBall"{
+                if cannonBall.position.y > screenHeight/2{
                     cannonBall.removeFromParent()
                 }
             }
