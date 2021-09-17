@@ -13,7 +13,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     let movementManager = CMMotionManager()
     let gyroscopeUpdateRate: Double = 1/1000 //1000 updates per sec
-    let cannon: Cannon = Cannon()
+    var cannon: Cannon = Cannon()
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     var lastTime: Double?
@@ -23,8 +23,12 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     var isSoundEnabled: Bool?
     var isMusicEnabled: Bool?
     var isGameOn = false
+    let fromSkyToGroundEnemyTimeInitial: Double = 4
     var fromSkyToGroundEnemyTime: Double = 4
     var fromSkyToGroundEnemyTimeMin: Double = 1
+    let fromSkyToGroundEnemyTimeDecay: Double = 0.375 //reduced from fromSkyToGroundEnemyTime once every some points achieved
+    var spawnEnemyTimeInterval: Double = 2
+    var spawnEmeyTimeIntervalInitial: Double = 2
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -50,11 +54,13 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     
     func gameBegin(){
         self.addChild(scoreLabel.node)
+        fromSkyToGroundEnemyTime = fromSkyToGroundEnemyTimeInitial
+        spawnEnemyTimeInterval = spawnEmeyTimeIntervalInitial
         setBackground()
         setRail()
         setGround()
         setCannon()
-        startSpawningEnemies()
+        startSpawningEnemies(timeInterval: spawnEnemyTimeInterval)
         isGameOn = true
         self.cannon.node.physicsBody?.isDynamic = true
     }
@@ -82,8 +88,8 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         self.addChild(mainMenu)
     }
     
-    func startSpawningEnemies() {
-        self.spawnEnemyTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.spawnEnemy), userInfo: nil, repeats: true)
+    func startSpawningEnemies(timeInterval: Double) {
+        self.spawnEnemyTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.spawnEnemy), userInfo: nil, repeats: true)
     }
     
     func stopSpawningEnemies() {
@@ -103,6 +109,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
         let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: fromSkyToGroundEnemyTime)
+        print("movingDown in \(fromSkyToGroundEnemyTime) seconds.")
         let random = Int.random(in: 0...1)
         switch random {
             case 0:
@@ -201,6 +208,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     }
     
     func setCannon() {
+        self.cannon = Cannon()
         self.cannon.node.position = CGPoint(x: 0, y: -screenHeight/2 + cannon.node.size.height)
         self.addChild(cannon.node)
         updateDeviceAcceleration()

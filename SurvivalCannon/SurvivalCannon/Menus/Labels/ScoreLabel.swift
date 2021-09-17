@@ -11,6 +11,8 @@ import SpriteKit
 class ScoreLabel {
     var node: SKLabelNode
     var count: Int
+    var enemySpawnIntervalChanges: Int = 2
+    var enemyFromSkyToGroundTimeChanges: Int = 6
     
     init() {
         node = SKLabelNode(text: "Score: 0")
@@ -21,17 +23,63 @@ class ScoreLabel {
         node.name = "scoreLabel"
         node.position = CGPoint(x: 0, y: UIScreen.main.bounds.height * 0.5 - node.fontSize * 2.5)
         node.zPosition = 10
+        enemySpawnIntervalChanges = 2
+        enemyFromSkyToGroundTimeChanges = 6
     }
     
     func resetScore() {
         count = 0
         node.text = "Score: \(count)"
+        enemySpawnIntervalChanges = 2
+        enemyFromSkyToGroundTimeChanges = 6
     }
 
     func update(points: Int) {
         self.pointSinalizer(points: points)
         count += points
         node.text = "Score: \(count)"
+
+        if let myScene = self.node.parent as? Scenario {
+            //checking if we should update enemyFromSkyToGround time
+            if count >= 5 && enemyFromSkyToGroundTimeChanges-1 == 5 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            else if count >= 10 && enemyFromSkyToGroundTimeChanges-1 == 4 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            else if count >= 15 && enemyFromSkyToGroundTimeChanges-1 == 3 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            else if count >= 20 && enemyFromSkyToGroundTimeChanges-1 == 2 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            else if count >= 25 && enemyFromSkyToGroundTimeChanges-1 == 1 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            else if count >= 30 && enemyFromSkyToGroundTimeChanges-1 == 0 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+                enemyFromSkyToGroundTimeChanges -= 1
+                myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
+            }
+            
+            //checking if we should update enemySpawnInterval
+//            if count >= 50 && enemySpawnIntervalChanges-1 == 1 {
+//                enemySpawnIntervalChanges -= 1
+//                myScene.stopSpawningEnemies()
+//                myScene.spawnEnemyTimeInterval = 1.5
+//                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
+//            }
+//            else if count >= 200 && enemySpawnIntervalChanges-1 == 0{
+//                enemySpawnIntervalChanges -= 1
+//                myScene.stopSpawningEnemies()
+//                myScene.spawnEnemyTimeInterval = 1
+//                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
+//            }
+        }
     }
     
     func pointSinalizer(points: Int) {
