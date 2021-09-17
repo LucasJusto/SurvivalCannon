@@ -109,7 +109,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         let maxRange = (self.scene?.size.width)! / 2.8
         let randomX = CGFloat.random(in: -maxRange...maxRange)
         let moveDown = SKAction.moveTo(y: -(self.frame.size.height / 2), duration: fromSkyToGroundEnemyTime)
-        print("movingDown in \(fromSkyToGroundEnemyTime) seconds.")
         let random = Int.random(in: 0...1)
         switch random {
             case 0:

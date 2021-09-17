@@ -41,44 +41,44 @@ class ScoreLabel {
 
         if let myScene = self.node.parent as? Scenario {
             //checking if we should update enemyFromSkyToGround time
-            if count >= 5 && enemyFromSkyToGroundTimeChanges-1 == 5 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            if count >= 25 && enemyFromSkyToGroundTimeChanges-1 == 5 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
-            else if count >= 10 && enemyFromSkyToGroundTimeChanges-1 == 4 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            else if count >= 75 && enemyFromSkyToGroundTimeChanges-1 == 4 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
-            else if count >= 15 && enemyFromSkyToGroundTimeChanges-1 == 3 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            else if count >= 125 && enemyFromSkyToGroundTimeChanges-1 == 3 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
-            else if count >= 20 && enemyFromSkyToGroundTimeChanges-1 == 2 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            else if count >= 200 && enemyFromSkyToGroundTimeChanges-1 == 2 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
-            else if count >= 25 && enemyFromSkyToGroundTimeChanges-1 == 1 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            else if count >= 250 && enemyFromSkyToGroundTimeChanges-1 == 1 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
-            else if count >= 30 && enemyFromSkyToGroundTimeChanges-1 == 0 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
+            else if count >= 350 && enemyFromSkyToGroundTimeChanges-1 == 0 && myScene.fromSkyToGroundEnemyTime > myScene.fromSkyToGroundEnemyTimeMin {
                 enemyFromSkyToGroundTimeChanges -= 1
                 myScene.fromSkyToGroundEnemyTime -= myScene.fromSkyToGroundEnemyTimeDecay
             }
             
             //checking if we should update enemySpawnInterval
-//            if count >= 50 && enemySpawnIntervalChanges-1 == 1 {
-//                enemySpawnIntervalChanges -= 1
-//                myScene.stopSpawningEnemies()
-//                myScene.spawnEnemyTimeInterval = 1.5
-//                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
-//            }
-//            else if count >= 200 && enemySpawnIntervalChanges-1 == 0{
-//                enemySpawnIntervalChanges -= 1
-//                myScene.stopSpawningEnemies()
-//                myScene.spawnEnemyTimeInterval = 1
-//                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
-//            }
+            if count >= 50 && enemySpawnIntervalChanges-1 == 1 {
+                enemySpawnIntervalChanges -= 1
+                myScene.stopSpawningEnemies()
+                myScene.spawnEnemyTimeInterval = 1.5
+                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
+            }
+            else if count >= 150 && enemySpawnIntervalChanges-1 == 0{
+                enemySpawnIntervalChanges -= 1
+                myScene.stopSpawningEnemies()
+                myScene.spawnEnemyTimeInterval = 1
+                myScene.startSpawningEnemies(timeInterval: myScene.spawnEnemyTimeInterval)
+            }
         }
     }
     
