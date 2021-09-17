@@ -300,7 +300,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
             createAndPlaySound(soundName: "woodSound")
             scoreLabel.update(points: 2)
         }
-        //contact between player and any enemy
+        //contact between player and any enemy 
         else if ((contact.bodyA.node?.name == "anvil" || contact.bodyB.node?.name == "anvil") || (contact.bodyA.node?.name == "barrel" || contact.bodyB.node?.name == "barrel")) && (contact.bodyA.node?.name == "Cannon" || contact.bodyB.node?.name == "Cannon") {
             gameOver()
         }
