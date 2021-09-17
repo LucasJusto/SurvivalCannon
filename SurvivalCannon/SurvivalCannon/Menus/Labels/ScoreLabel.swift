@@ -20,7 +20,7 @@ class ScoreLabel {
         node.fontColor = hexStringToUIColor(hex: "#40200e")
         node.name = "scoreLabel"
         node.position = CGPoint(x: 0, y: UIScreen.main.bounds.height * 0.5 - node.fontSize * 2.5)
-        node.zPosition = 2
+        node.zPosition = 10
     }
     
     func resetScore() {

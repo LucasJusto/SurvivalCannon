@@ -21,11 +21,6 @@ class FinalScore: SKSpriteNode {
         let font = "Copperplate"
         let color = hexStringToUIColor(hex: "#40200e")
         
-        
-        let background = SKSpriteNode(imageNamed: "scenario")
-        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        background.zPosition = 0
-        
         let backgroundScore = SKSpriteNode(imageNamed: "backgroundScore")
         backgroundScore.size = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.55)
         backgroundScore.position = CGPoint(x: 0, y: self.size.height * 0.05)
@@ -67,7 +62,6 @@ class FinalScore: SKSpriteNode {
         }
         menuButton.zPosition = 5
         
-        self.addChild(background)
         self.addChild(backgroundScore)
         self.addChild(scoreLabel)
         self.addChild(score)
