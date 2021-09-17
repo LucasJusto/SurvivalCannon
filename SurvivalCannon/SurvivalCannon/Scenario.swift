@@ -8,7 +8,6 @@
 import Foundation
 import SpriteKit
 import CoreMotion
-import AVFoundation
 
 class Scenario: SKScene, SKPhysicsContactDelegate {
     
@@ -162,16 +161,13 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     func cannonShot(){
         let cannonBall = CannonBall()
         let cannonPosition = self.cannon.node.position
-        let cannonSize = self.cannon.node.size
-        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + cannonSize.height/2 + cannonBall.size.height/2)
+        cannonBall.position = CGPoint(x: cannonPosition.x, y: cannonPosition.y + self.cannon.node.size.height/2 + cannonBall.size.height/2)
         cannonBall.zPosition = 10
         var impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/12), duration: 0.01)
         if screenHeight > 1000 {
             impulseAction = SKAction.applyImpulse(CGVector(dx: 0, dy: screenHeight/3), duration: 0.01)
         }
-        cannonBall.run(SKAction.sequence([impulseAction, .wait(forDuration: 0.5)])){
-            cannonBall.removeFromParent()
-        }
+        cannonBall.run(impulseAction)
         self.addChild(cannonBall)
     }
     
@@ -179,8 +175,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         createAndPlaySound(soundName: "shotSound")
         cannonShot()
     }
-    
-    
     
     func setRail() {
         let rail: SKSpriteNode = SKSpriteNode(imageNamed: "Rail")
@@ -242,6 +236,22 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func checkAndRemoveCannonBalls() {
+        //it needs to use a copy, otherwise it will produce index out of bounds because of the self.cannonBalls.remove
+        let copyOfSelfChildren = self.children.map { node in
+            node
+        }
+        
+        if copyOfSelfChildren.count > 0 {
+            for i in 0...copyOfSelfChildren.count-1 {
+                let cannonBall = copyOfSelfChildren[i]
+                if cannonBall.position.y > screenHeight/2 && cannonBall.name == "CannonBall"{
+                    cannonBall.removeFromParent()
+                }
+            }
+        }
+    }
+    
     func createAndPlaySound(soundName: String) {
         if self.isSoundEnabled! {
             let sound = SKAudioNode(fileNamed: soundName)
@@ -252,20 +262,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 sound.removeFromParent()
             }
         }
-//        var player: AVAudioPlayer?
-//        if let url = Bundle.main.path(forResource: soundName, ofType: "mp3") {
-//            do {
-//                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-//                try AVAudioSession.sharedInstance().setActive(true)
-//                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: url))
-//                if let playerNotNull = player {
-//                    playerNotNull.play()
-//                }
-//            }
-//            catch {
-//
-//            }
-//        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -304,5 +300,6 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        self.checkAndRemoveCannonBalls()
     }
 }
