@@ -18,7 +18,7 @@ class Cannon {
         node = SKSpriteNode(texture: texture)
         node.name = "Cannon"
         node.zPosition = 5
-        let percentageOfScreenHeight: CGFloat = 0.2 //the percentage of the screen height that will define the cannon's height
+        let percentageOfScreenHeight: CGFloat = 0.15 //the percentage of the screen height that will define the cannon's height
         let widthProportionToHeight: CGFloat = 0.87 //for cannon, 1 height = 0.87 width
         node.size = CGSize(width: UIScreen.main.bounds.height * widthProportionToHeight * percentageOfScreenHeight, height: UIScreen.main.bounds.height * percentageOfScreenHeight)
         node.physicsBody = SKPhysicsBody(texture: texture, size: CGSize(width: node.size.width, height: node.size.height))

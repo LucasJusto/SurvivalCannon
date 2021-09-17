@@ -21,43 +21,38 @@ class FinalScore: SKSpriteNode {
         let font = "Copperplate"
         let color = hexStringToUIColor(hex: "#40200e")
         
-        
-        let background = SKSpriteNode(imageNamed: "scenario")
-        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        background.zPosition = 0
-        
         let backgroundScore = SKSpriteNode(imageNamed: "backgroundScore")
         backgroundScore.size = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.55)
         backgroundScore.position = CGPoint(x: 0, y: self.size.height * 0.05)
-        backgroundScore.zPosition = 1
+        backgroundScore.zPosition = 20
         
         let scoreLabel: SKLabelNode = SKLabelNode(text: "Your Score")
         scoreLabel.fontName = font
         scoreLabel.fontSize = self.size.height * 0.035
         scoreLabel.fontColor = color
         scoreLabel.position = CGPoint(x: 0, y: self.size.height * 0.2)
-        scoreLabel.zPosition = 2
+        scoreLabel.zPosition = 25
         
-        let score: SKLabelNode = SKLabelNode(text: myScene.scoreLabel.node.text)
+        let score: SKLabelNode = SKLabelNode(text: "\(myScene.scoreLabel.count)")
         score.fontName = font
         score.fontSize = self.size.height * 0.07
         score.fontColor = color
         score.position = CGPoint(x: 0, y: self.size.height * 0.09)
-        score.zPosition = 2
+        score.zPosition = 25
         
         let bestScore: SKLabelNode = SKLabelNode(text: "Best score: 999")
         bestScore.fontName = font
         bestScore.fontSize = self.size.height * 0.02
         bestScore.fontColor = color
         bestScore.position = CGPoint(x: 0, y: self.size.height * 0.05)
-        bestScore.zPosition = 2
+        bestScore.zPosition = 25
         
         let playAgainButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.01), text: "Try Again") {
             self.myScene.scoreLabel.resetScore()
             self.myScene.removeAllButMusic()
             self.myScene.gameBegin()
         }
-        playAgainButton.zPosition = 5
+        playAgainButton.zPosition = 25
         
         let menuButton = Button(parentMenu: self, position: CGPoint(x: 0, y: self.size.height * -0.1), text: "Menu") {
             self.myScene.scoreLabel.resetScore()
@@ -65,9 +60,8 @@ class FinalScore: SKSpriteNode {
             self.myScene.setBackground()
             self.myScene.setMainMenu()
         }
-        menuButton.zPosition = 5
+        menuButton.zPosition = 25
         
-        self.addChild(background)
         self.addChild(backgroundScore)
         self.addChild(scoreLabel)
         self.addChild(score)
