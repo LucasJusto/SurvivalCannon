@@ -107,14 +107,14 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 let barrel = self.createBarrel(x: randomX)
                 barrel.run(moveDown) {
                     barrel.removeFromParent()
-                    self.scoreLabel.update()
+                    self.scoreLabel.update(points: 1)
                 }
                 addChild(barrel)
             case 1:
                 let anvil = self.createAnvil(x: randomX)
                 anvil.run(moveDown) {
                     anvil.removeFromParent()
-                    self.scoreLabel.update()
+                    self.scoreLabel.update(points: 1)
                 }
                 addChild(anvil)
             default:
@@ -280,6 +280,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
                 ball = contact.bodyB.node
             }
             ball?.removeFromParent()
+            self.scoreLabel.update(points: 1)
             createAndPlaySound(soundName: "metalSound")
         }
         //contact between barrel and cannonBall
@@ -287,7 +288,7 @@ class Scenario: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
             createAndPlaySound(soundName: "woodSound")
-            scoreLabel.update()
+            scoreLabel.update(points: 2)
         }
         //contact between player and any enemy
         else if ((contact.bodyA.node?.name == "anvil" || contact.bodyB.node?.name == "anvil") || (contact.bodyA.node?.name == "barrel" || contact.bodyB.node?.name == "barrel")) && (contact.bodyA.node?.name == "Cannon" || contact.bodyB.node?.name == "Cannon") {

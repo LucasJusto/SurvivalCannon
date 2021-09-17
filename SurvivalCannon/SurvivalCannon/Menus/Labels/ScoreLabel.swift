@@ -28,14 +28,14 @@ class ScoreLabel {
         node.text = "Score: \(count)"
     }
 
-    func update() {
-        self.pointSinalizer()
-        count += 1
+    func update(points: Int) {
+        self.pointSinalizer(points: points)
+        count += points
         node.text = "Score: \(count)"
     }
     
-    func pointSinalizer() {
-        let point = SKLabelNode(text: "+1")
+    func pointSinalizer(points: Int) {
+        let point = SKLabelNode(text: "+\(points)")
         point.fontSize = UIScreen.main.bounds.height * 0.05
         point.fontName = "Copperplate"
         point.fontColor = hexStringToUIColor(hex: "#40200e")
